@@ -33,6 +33,7 @@ class Image extends Bing
 		$results = $this->crawler->filter('div.item')->each(function(Crawler $node, $i){
 			$image = [
 				'mediaurl' => $node->filter('a.thumb')->attr('href'),
+				'thumburl' => $node->filter('a.thumb > img')->attr('src'),
 				'link' => $node->filter('a.tit')->attr('href'),
 				'title' => $node->filter('div.des')->html(),
 				'size' => $node->filter('div.fileInfo')->html()
